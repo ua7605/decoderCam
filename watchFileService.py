@@ -44,6 +44,5 @@ def main(file_path=None, file_path_json=None):
 
 
 if __name__ == "__main__":
-    main(file_path='/Users/vincentcharpentier/Downloads/username.csv', file_path_json='/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json' )
-    #file_paht_to_txt_file='/Users/vincentcharpentier/School/Master/Testfoldere/Testbestand.txt'
-    #file_paht_to_csv_file = '/Users/vincentcharpentier/School/Master/Testfoldere/Testbestand.txt'
+    main(file_path='/Users/vincentcharpentier/Downloads/username.csv', file_path_json='/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json')
+
