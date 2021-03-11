@@ -8,8 +8,8 @@ class CamDecoder():
         self.cam = asn1tools.compile_files('./cam121.asn','uper')
 
     def encode(self):
-        message_hexadecimal_string = '01020000138EC14D00FA9269F00DC028393FFFFFFC23B7743E80'
-        encoded = bytearray.fromhex(message_hexadecimal_string)
+        cam_message_hexadecimal_string= '01020000138EC14D00FA9269F00DC028393FFFFFFC23B7743E80'
+        encoded = bytearray.fromhex(cam_message_hexadecimal_string)
         decoded = self.cam.decode('CAM',encoded)
         self.to_json_format(decoded)
         return decoded
