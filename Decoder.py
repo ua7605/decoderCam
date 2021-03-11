@@ -5,7 +5,7 @@ import mpu.io
 from csvReader import CsvReader
 
 
-class CamDecoder():
+class CamDecoder:
 
     def __init__(self, file_path, output_file_path):
         # With this we load in the appropriate asn file for the decoder.
@@ -13,6 +13,7 @@ class CamDecoder():
         self.file_path = file_path
         self.output_file_path = output_file_path
         self.csv_reader = CsvReader(self.file_path)
+        self.encode()
 
     def encode(self):
 
@@ -30,6 +31,6 @@ class CamDecoder():
         self.write_to_json_file(JSON_format)
 
     def write_to_json_file(self, cam_message):
-        # mpu.io.write('/Users/vincentcharpentier/School/Master/MAP/Decoder/outputfileCAM.json', cam_message)
+
         with open(self.output_file_path, 'w') as outfile:
             outfile.write(cam_message)
