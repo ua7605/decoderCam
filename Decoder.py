@@ -16,7 +16,7 @@ class CamDecoder():
 
     def to_json_format(self, decodedmessage):
         JSON_format = json.dumps(decodedmessage)
-        print("Hieronder staat het JSON formaat")
+        print("Below the decoded JSON format")
         print(JSON_format)
 
    #def write
