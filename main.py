@@ -14,8 +14,8 @@ def print_hi(name):
 if __name__ == '__main__':
     #print_hi('PyCharm')
 
-    decoder = CamDecoder()
-    print(decoder.encode())
+    decoder = CamDecoder(file_path='/Users/vincentcharpentier/Downloads/username.csv', output_file_path='/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json')
+    decoder.encode()
 
 
 
