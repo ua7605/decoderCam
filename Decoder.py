@@ -16,21 +16,20 @@ class CamDecoder:
         self.encode()
 
     def encode(self):
-
-        cam_message_hexadecimal_string = self.csv_reader.read_csv_file()
+        #cam_message_hexadecimal_string, received_message = self.csv_reader.read_csv_file()
+        cam_message_hexadecimal_string, received_message = self.csv_reader.optimized_csv_read_file()
         encoded = bytearray.fromhex(cam_message_hexadecimal_string)
         decoded = self.cam.decode('CAM', encoded)
-        self.to_json_format(decoded)
+        if received_message:
+            self.to_json_format(decoded)
 
         return decoded
 
     def to_json_format(self, decoded_message):
         JSON_format = json.dumps(decoded_message)
-        print("Below the decoded JSON format")
         print(JSON_format)
         self.write_to_json_file(JSON_format)
 
     def write_to_json_file(self, cam_message):
-
         with open(self.output_file_path, 'w') as outfile:
             outfile.write(cam_message)

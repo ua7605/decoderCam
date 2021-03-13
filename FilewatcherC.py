@@ -21,6 +21,7 @@ class MyEventHandler(PatternMatchingEventHandler):
         logging.info("File %s was just modified" % event.src_path)
 
 def main(file_path=None):
+
     logging.basicConfig(level=logging.INFO,
         format='%(asctime)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S')

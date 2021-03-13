@@ -44,5 +44,6 @@ def main(file_path=None, file_path_json=None):
 
 
 if __name__ == "__main__":
-    main(file_path='/Users/vincentcharpentier/Downloads/username.csv', file_path_json='/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json')
+    main(file_path='/Users/vincentcharpentier/School/Master/MAP/Decoder/cam_1_20210312T104241_uper.csv', file_path_json='/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json')
 
+    #/Users/vincentcharpentier/School/Master/MAP/Decoder/cam_1_20210312T104241_uper.csv     /Users/vincentcharpentier/Downloads/username.csv
