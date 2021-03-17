@@ -1,0 +1,15 @@
+[Machine]
+cpu_load = 100
+cpu_cores = 1
+memory_load = 1000000000
+
+[Links]
+channels = ["topic"]
+
+[Links.topic]
+load_bps = 10000000
+
+[DUST]
+application_name = "stressor"
+config_file = "configuration.json"
+module_dir = "modules"
