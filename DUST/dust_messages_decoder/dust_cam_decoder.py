@@ -4,9 +4,9 @@ import json
 
 class DUSTCamDecoder(object):
 
-    def __init__(self, output_file):
+    def __init__(self, file_path_to_output_json_file):
         self.cam = asn1tools.compile_files('./cam121.asn', 'uper')
-        self.output_file = output_file
+        self.json_file = file_path_to_output_json_file
 
     def decode_cam_message(self, message):
         encoded_cam = bytearray.fromhex(message)
@@ -15,5 +15,5 @@ class DUSTCamDecoder(object):
         return json_object_cam_message
 
     def _write_it_to_json_file(self, cam_message_json_format):
-        with open(self.output_file, 'w') as output_file:
-            output_file.write(cam_message_json_format)
+        with open(self.json_file, 'w') as output_json_file:
+            output_json_file.write(cam_message_json_format)
