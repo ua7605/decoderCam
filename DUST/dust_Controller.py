@@ -7,7 +7,7 @@ import time
 
 class DUSTController(object):
     @staticmethod
-    def from_config(configuration):
+    def load_from_config(configuration):
         dust_config = configuration["DUST"]
         name = dust_config["application_name"]
         config_file = dust_config["config_file"]
