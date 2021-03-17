@@ -5,14 +5,14 @@ import time
 # from pydust import core
 
 
-class DustController(object):
+class DUSTController(object):
     @staticmethod
     def from_config(configuration):
         dust_config = configuration["DUST"]
         name = dust_config["application_name"]
         config_file = dust_config["config_file"]
         module_dir = dust_config["module_dir"]
-        return DustController(name=name,
+        return DUSTController(name=name,
                               config_file=config_file,
                               dust_module_dir=module_dir)
 
