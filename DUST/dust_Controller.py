@@ -36,3 +36,10 @@ class DustController(object):
 
         # Let DUST launch properly
         time.sleep(1)
+
+    def shutdown(self):
+        self.dust.disconnect()
+        self.dust.cycle_stop()
+
+    def publish(self, topic, message):
+        self.dust.publish(topic, message)
