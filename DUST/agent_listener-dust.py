@@ -14,7 +14,9 @@ class AgentListenerDust(object):
     def incoming_DUST_message(self, data_hex):
         print("Got message on topic")
         self.json_cam_message = self.dust_cam_decoder.decode_cam_message(message=data_hex)
+        if self.json_cam_message is not None:
+            self._sent_cam_data_to_server(json_cam_data=self.json_cam_message)
 
-    def _sent_data_to_server(self, json_cam_data):
+    def _sent_cam_data_to_server(self, json_cam_data):
         self.dust_comm.publish(topic="CAM-from-decoder", message=json_cam_data)# Todo Make a DUST channel topic: "CAM-from-decoder" such that the Server can receive it
 
