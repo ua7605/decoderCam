@@ -17,7 +17,7 @@ class AgentListenerDust(object):
         if self.json_cam_message is not None:
             self._sent_cam_data_to_server(json_cam_data=self.json_cam_message)
         else:
-            print("There is a problem with it decoding the received message")
+            print("There is a problem with it decoding the received message") # TODO in the future change it to a proper logger
 
     def _sent_cam_data_to_server(self, json_cam_data):
         self.dust_comm.publish(topic="CAM-from-decoder", message=json_cam_data)# Todo Make a DUST channel topic: "CAM-from-decoder" such that the Server can receive it
