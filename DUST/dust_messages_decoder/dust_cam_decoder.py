@@ -9,6 +9,7 @@ class DUSTCamDecoder(object):
         self.json_file = file_path_to_output_json_file
 
     def decode_cam_message(self, message):
+        # TODO Make it possible to distinguish CAM, DENM and IVI messages
         encoded_cam = bytearray.fromhex(message)
         decoded_cam = self.cam.decode('CAM', encoded_cam)
         json_object_cam_message = json.dumps(decoded_cam)
