@@ -19,27 +19,30 @@ class DustController(object):
     def __init__(self, name, config_file="configuration.json", dust_module_dir="./modules"):
         # initialises the core with the given block name and the directory where the modules are located (default
         # "./modules")
-        self.dust = core.Core(name, dust_module_dir)
+        self.dust_core = core.Core(name, dust_module_dir)
 
         # start a background thread responsible for tasks that should always be running in the same thread
-        self.dust.cycle_forever()
+        self.dust_core.cycle_forever()
 
         # load the core, this includes reading the libraries in the modules directory to check addons and transports
         # are available
-        self.dust.setup()
+        self.dust_core.setup()
 
         # set the path to the configuration file
-        self.dust.set_configuration_file(config_file)
+        self.dust_core.set_configuration_file(config_file)
 
         # connects all channels
-        self.dust.connect()
+        self.dust_core.connect()
 
         # Let DUST launch properly
         time.sleep(1)
 
     def shutdown(self):
-        self.dust.disconnect()
-        self.dust.cycle_stop()
+        self.dust_core.disconnect()
+        self.dust_core.cycle_stop()
 
     def publish(self, topic, message):
-        self.dust.publish(topic, message)
+        self.dust_core.publish(topic, message)
+
+    def register_listener(self, topic, func):
+        self.dust_core.register_listener(topic, func)
