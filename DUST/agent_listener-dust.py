@@ -3,9 +3,10 @@ from DUST.dust_messages_decoder.dust_cam_decoder import DUSTCamDecoder
 
 
 class AgentListenerDust(object):
-    def __init__(self, configuration_file_toml):
-        self.dust_comm: DUSTController = DUSTController.load_from_config(configuration=configuration_file_toml)
-        self.dust_cam_decoder: DUSTCamDecoder = DUSTCamDecoder()
+    def __init__(self, configuration_toml):
+        self.dust_comm: DUSTController = DUSTController.load_from_config(configuration=configuration_toml)
+        output_file = configuration_toml["output_files"]
+        self.dust_cam_decoder: DUSTCamDecoder = DUSTCamDecoder(file_path_to_output_json_file=output_file["json_output_file_path"])
         self.json_cam_message = None
 
     def _register_listener(self):

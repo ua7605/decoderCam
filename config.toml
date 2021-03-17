@@ -13,3 +13,6 @@ load_bps = 10000000
 application_name = "stressor"
 config_file = "configuration.json"
 module_dir = "modules"
+
+[output_files]
+json_output_file_path = "/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json"
