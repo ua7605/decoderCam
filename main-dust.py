@@ -15,5 +15,5 @@ if __name__ == "__main__":
         print("The NAME IS: ", name)
         print("Toml file is successful being read")
     if is_true:
-        agent_dust = AgentListenerDust(configuration_toml=configuration_toml_file)
+        agent_dust = AgentListenerDust(configuration_toml=config_file)
         agent_dust.start()
