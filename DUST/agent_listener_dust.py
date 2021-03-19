@@ -18,6 +18,7 @@ class AgentListenerDust(object):
     def incoming_DUST_message(self, data_hex):
         print("Got message on topic")
         self.json_cam_message = self.dust_cam_decoder.decode_cam_message(message=data_hex)
+        print("The decoded message is: ", self.json_cam_message)
         if self.json_cam_message is not None:
             self._sent_cam_data_to_server(json_cam_data=self.json_cam_message)
         else:
