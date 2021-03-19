@@ -12,6 +12,7 @@ class DUSTCamDecoder(object):
     def decode_cam_message(self, message):
         print("In the decode_cam_message definition!")
         # TODO Make it possible to distinguish CAM, DENM and IVI messages
+        print(message)
         encoded_cam = bytearray.fromhex(message)
         print("Message: ", encoded_cam)
         decoded_cam = self.cam.decode('CAM', encoded_cam)
