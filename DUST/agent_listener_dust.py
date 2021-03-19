@@ -17,7 +17,6 @@ class AgentListenerDust(object):
 
     def incoming_DUST_message(self, data_hex):
         print("Got message on topic")
-        print("how the data looks like in the function: incoming_DUST_message: ", data_hex)
         self.json_cam_message = self.dust_cam_decoder.decode_cam_message(message=data_hex)
         print("The decoded message is: ", self.json_cam_message)
         # TODO: this needs to be implemented in the future!!
@@ -28,7 +27,9 @@ class AgentListenerDust(object):
 
     def _sent_cam_data_to_server(self, json_cam_data):
         print("data will be sent to the server!")
-        self.dust_comm.publish(topic="CAM-topic-decoder", message=json_cam_data)# Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it
+        # declare a bytes-like payload object
+        payload = json_cam_data.encode("ascii")
+        self.dust_comm.publish(topic="CAM-topic-decoder", message=payload)# Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it
 
     def start(self):
         print("Starting to listen")
