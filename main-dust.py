@@ -18,4 +18,7 @@ if __name__ == "__main__":
     if is_true:
         agent_dust = AgentListenerDust(configuration_toml=config_file)
         agent_dust.start()
+    print("Agent is started correct! and is listening and can sent")
+    while True:
+        time.sleep(1)
 
