@@ -8,7 +8,7 @@ from pydust import core
 class DUSTController(object):
     @staticmethod
     def load_from_config(configuration):
-        print(configuration["Machine"])
+        print(configuration['Machine'])
         dust_config = configuration["DUST"]
 
         name = dust_config["application_name"]
