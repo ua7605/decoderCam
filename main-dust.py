@@ -11,6 +11,5 @@ if __name__ == "__main__":
         config_file = toml.load(f=file)
         is_true = True
     if is_true:
-
-    agent_dust = AgentListenerDust(configuration_toml=configuration_toml_file)
-    agent_dust.start()
+        agent_dust = AgentListenerDust(configuration_toml=configuration_toml_file)
+        agent_dust.start()
