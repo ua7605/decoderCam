@@ -17,7 +17,7 @@ class AgentListenerDust(object):
         self.dust_comm.register_listener("ivi_topic_out", self.incoming_DUST_message)
         print("listening on topic: ", "ivi_topic_out")
         print("Agent is started correct! and is listening and can sent")
-        self.__keep_dust_agent_live()
+        self._keep_dust_agent_live()
 
 
     def incoming_DUST_message(self, data_hex):
@@ -36,7 +36,7 @@ class AgentListenerDust(object):
         payload = json_cam_data.encode("ascii")
         self.dust_comm.publish(topic="CAM-topic-decoder", message=payload)# Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it
 
-    def __keep_dust_agent_live(self):
+    def _keep_dust_agent_live(self):
         with True:
             time.sleep(1)
 
