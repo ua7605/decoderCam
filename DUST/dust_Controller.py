@@ -37,6 +37,7 @@ class DUSTController(object):
 
         # Let DUST launch properly
         time.sleep(1)
+        print("DUST is launched properly")
 
     def shutdown(self):
         self.dust_core.disconnect()
