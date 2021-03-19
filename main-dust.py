@@ -10,6 +10,9 @@ if __name__ == "__main__":
     with open(configuration_toml_file) as file:
         config_file = toml.load(f=file)
         is_true = True
+        dust_config = config_file["DUST"]
+        name = dust_config["application_name"]
+        print("The NAME IS: ", name)
         print("Toml file is successful being read")
     if is_true:
         agent_dust = AgentListenerDust(configuration_toml=configuration_toml_file)
