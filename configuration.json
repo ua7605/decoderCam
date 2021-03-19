@@ -1,0 +1,17 @@
+{
+  "subscriber-block": {
+    "links": {
+      "channels": {
+        "ivi_topic_out": {
+          "transport": {
+            "type": "zeromq",
+            "topic": "ivi_topic_out",
+            "host_server": false,
+            "host": "tcp://127.0.0.1:5558",
+            "publish": false
+          }
+        }
+      }
+    }
+  }
+}
