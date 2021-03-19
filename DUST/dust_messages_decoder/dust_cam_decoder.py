@@ -7,6 +7,7 @@ class DUSTCamDecoder(object):
     def __init__(self, file_path_to_output_json_file):
         self.cam = asn1tools.compile_files('./cam121.asn', 'uper')
         self.json_file = file_path_to_output_json_file
+        print("Decoder is ready")
 
     def decode_cam_message(self, message):
         # TODO Make it possible to distinguish CAM, DENM and IVI messages
