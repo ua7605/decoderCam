@@ -20,6 +20,8 @@ class DUSTController(object):
     def __init__(self, name, config_file="configuration.json", dust_module_dir="./modules"):
         # initialises the core with the given block name and the directory where the modules are located (default
         # "./modules")
+        print("config_file: ", config_file)
+        print("dust_module_dir: ", dust_module_dir)
         self.dust_core = core.Core(name, dust_module_dir)
 
         # start a background thread responsible for tasks that should always be running in the same thread
