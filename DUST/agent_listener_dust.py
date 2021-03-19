@@ -13,6 +13,7 @@ class AgentListenerDust(object):
 
     def _register_listener(self):
         self.dust_comm.register_listener("ivi_topic_out", self.incoming_DUST_message)
+        print("listening on topic: ", "ivi_topic_out")
 
     def incoming_DUST_message(self, data_hex):
         print("Got message on topic")
