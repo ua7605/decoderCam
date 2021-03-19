@@ -16,9 +16,9 @@ class DUSTCamDecoder(object):
         print("decoded_cam: ", decoded_cam)
         json_object_cam_message = json.dumps(decoded_cam)
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
-        print("Error in: _write_it_to_json_file ? So in the file writer?")
         return json_object_cam_message
 
     def _write_it_to_json_file(self, cam_message_json_format):
+        print("The file were the result will be Written: ", self.json_file)
         with open(self.json_file, 'w') as output_json_file:
             output_json_file.write(cam_message_json_format)
