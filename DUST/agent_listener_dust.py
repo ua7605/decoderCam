@@ -27,5 +27,5 @@ class AgentListenerDust(object):
         self.dust_comm.publish(topic="CAM-topic-decoder", message=json_cam_data)# Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it
 
     def start(self):
+        print("Starting to listen")
         self._register_listener()
-        print("Starting the channels")
