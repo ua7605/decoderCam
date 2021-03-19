@@ -16,7 +16,7 @@
             "type": "zeromq",
             "publish": true,
             "host_server": false,
-            "host": "tcp://*:7001",
+            "host": "tcp://127.0.0.1:7001",
             "topic": "CAM-topic-decoder"
           }
         }
