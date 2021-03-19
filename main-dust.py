@@ -6,6 +6,7 @@ from DUST.agent_listener_dust import AgentListenerDust
 
 if __name__ == "__main__":
     configuration_toml_file = sys.argv[0]
+    print(configuration_toml_file)
     is_true = False
     with open(configuration_toml_file) as file:
         config_file = toml.load(f=file)
