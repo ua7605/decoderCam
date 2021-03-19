@@ -27,3 +27,4 @@ class AgentListenerDust(object):
 
     def start(self):
         self._register_listener()
+        print("Starting the channels")
