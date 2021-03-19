@@ -10,7 +10,7 @@ channels = ["topic"]
 load_bps = 10000000
 
 [DUST]
-application_name = "stressor"
+application_name = "ETS-message-block"
 config_file = "configuration.json"
 module_dir = "modules"
 

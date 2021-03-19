@@ -1,5 +1,5 @@
 {
-  "subscriber-block": {
+  "ETS-message-block": {
     "links": {
       "channels": {
         "ivi_topic_out": {
