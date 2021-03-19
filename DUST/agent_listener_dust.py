@@ -16,7 +16,7 @@ class AgentListenerDust(object):
         print("listening on topic: ", "ivi_topic_out")
 
     def incoming_DUST_message(self, data_hex):
-        print("Got message on topic")
+        print("Message received!")
         self.json_cam_message = self.dust_cam_decoder.decode_cam_message(message=data_hex)
         print("The decoded message is: ", self.json_cam_message)
         # TODO: this needs to be implemented in the future!!
