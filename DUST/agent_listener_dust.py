@@ -11,7 +11,6 @@ class AgentListenerDust(object):
         output_file = configuration_toml["output_files"]
         self.dust_cam_decoder: DUSTCamDecoder = DUSTCamDecoder(file_path_to_output_json_file=output_file["json_output_file_path"])
         self.json_cam_message = None
-        #self._register_listener()
 
     def _register_listener(self):
         self.dust_comm.register_listener("ivi_topic_out", self.incoming_DUST_message)
