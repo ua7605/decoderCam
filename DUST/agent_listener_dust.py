@@ -33,7 +33,7 @@ class AgentListenerDust(object):
         # declare a bytes-like payload object
         payload = json_cam_data.encode("ascii")
         self.dust_comm.publish(topic="CAM-topic-decoder",
-                               message=payload)  # Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it
+                               message=payload)  # Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it is done
 
     def _keep_dust_agent_live(self):
         with True:
