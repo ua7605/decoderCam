@@ -25,7 +25,7 @@
             "type": "zeromq",
             "host": "tcp://127.0.0.1:5555",
             "topic": "cam_topic_in",
-            "host_server": false,
+            "host_server": true,
             "publish": true
           }
         }
