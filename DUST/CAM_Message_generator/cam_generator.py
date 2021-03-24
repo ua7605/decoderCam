@@ -29,3 +29,4 @@ class CamGenerator(object):
             time.sleep(1)
             i += 1
             print("sent to CAMINO")
+            print(out)
