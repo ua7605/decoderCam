@@ -19,10 +19,11 @@ class CamGenerator(object):
     def start_custom_massaging(self):
         #custom_message = self.template_cam
         i = 1
+        out = self.template_cam
         while True:
-            self.template_cam['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
-            payload = bytes(self.cam_asn1.encode('CAM', self.template_cam))
-            self.agent_listener_dust.start_massaging_generator(payload)
+            out['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
+            payload = bytes(self.cam_asn1.encode("CAM", out))
+            self.agent_listener_dust.sent_custom_message(payload)
             time.sleep(1)
             i += 1
             print("sent to CAMINO")

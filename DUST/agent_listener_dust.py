@@ -46,5 +46,5 @@ class AgentListenerDust(object):
         print("Starting to listen")
         self._register_listener()
 
-    def start_massaging_generator(self, payload):
+    def sent_custom_message(self, payload):
         self._sent_custom_message_to_camino(payload)
