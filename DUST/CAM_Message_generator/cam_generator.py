@@ -12,6 +12,7 @@ class CamGenerator(object):
     def __init__(self, AgentListener, dir_name=dir_name):
         self.cam_asn1 = asn1tools.compile_files('./cam121.asn', 'uper')
         template_cam_json = os.path.join(dir_name, "cam_template.json")
+        print("path to template: "+template_cam_json)
         f = open(template_cam_json, "r")
         self.template_cam = json.load(f)
         self.agent_listener_dust: AgentListenerDust = AgentListener
