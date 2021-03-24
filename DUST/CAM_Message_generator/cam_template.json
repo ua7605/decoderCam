@@ -22,38 +22,38 @@
           }
         }
       },
-      "highFrequencyContainer": [
-        {
-          "heading": {
-            "headingValue": 3601,
-            "headingConfidence": 127
-          },
-          "speed": {
-            "speedValue": 16383,
-            "speedConfidence": 127
-          },
-          "driveDirection": "unavailable",
-          "vehicleLength": {
-            "vehicleLengthValue": 1023,
-            "vehicleLengthConfidenceIndication": "noTrailerPresent"
-          },
-          "vehicleWidth": 62,
-          "longitudinalAcceleration": {
-            "longitudinalAccelerationValue": 161,
-            "longitudinalAccelerationConfidence": 102
-          },
-          "curvature": {
-            "curvatureValue": 1023,
-            "curvatureConfidence": "unavailable"
-          },
-          "curvatureCalculationMode": "yawRateNotUsed",
-          "yawRate": {
-            "yawRateValue": 32767,
-            "yawRateConfidence": "unavailable"
-          },
-          "lanePosition": 1
-        }
-      ]
+      "highFrequencyContainer": {
+        "basicVehicleContainerHighFrequency": {
+  "heading": {
+    "headingValue": 3601,
+    "headingConfidence": 127
+  },
+  "speed": {
+    "speedValue": 16383,
+    "speedConfidence": 127
+  },
+  "driveDirection": "unavailable",
+  "vehicleLength": {
+    "vehicleLengthValue": 1023,
+    "vehicleLengthConfidenceIndication": "noTrailerPresent"
+  },
+  "vehicleWidth": 62,
+  "longitudinalAcceleration": {
+    "longitudinalAccelerationValue": 161,
+    "longitudinalAccelerationConfidence": 102
+  },
+  "curvature": {
+    "curvatureValue": 1023,
+    "curvatureConfidence": "unavailable"
+  },
+  "curvatureCalculationMode": "yawRateNotUsed",
+  "yawRate": {
+    "yawRateValue": 32767,
+    "yawRateConfidence": "unavailable"
+  },
+  "lanePosition": 1
+}
+}
     }
   }
 }
