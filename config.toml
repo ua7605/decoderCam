@@ -6,3 +6,7 @@ module_dir = "modules"
 
 [output_files]
 json_output_file_path = "/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json"
+
+[usage]
+cam_decoder = "false"
+cam_generator = "true"

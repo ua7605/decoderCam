@@ -35,6 +35,9 @@ class AgentListenerDust(object):
         self.dust_comm.publish(topic="CAM-topic-decoder",
                                message=payload)  # Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it is done
 
+    def _sent_custom_message_to_camino(self, payload):
+        self.dust_comm.publish(topic="cam_topic_in", message=payload)
+
     def _keep_dust_agent_live(self):
         with True:
             time.sleep(1)
@@ -42,3 +45,6 @@ class AgentListenerDust(object):
     def start(self):
         print("Starting to listen")
         self._register_listener()
+
+    def start_massaging_generator(self, payload):
+        self._sent_custom_message_to_camino(payload)

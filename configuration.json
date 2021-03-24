@@ -19,6 +19,15 @@
             "host": "tcp://127.0.0.1:7001",
             "topic": "CAM-topic-decoder"
           }
+        },
+        "cam_topic_in": {
+          "transport": {
+            "type": "zeromq",
+            "host": "tcp://127.0.0.1:5555",
+            "topic": "cam_topic_in",
+            "host_server": false,
+            "publish": true
+          }
         }
       }
     }
