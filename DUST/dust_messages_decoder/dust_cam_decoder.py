@@ -1,7 +1,7 @@
 import asn1tools
 import json
 
-
+# TODO: Add a logger, switch every print statement to a log statement
 class DUSTCamDecoder(object):
 
     def __init__(self, file_path_to_output_json_file):
