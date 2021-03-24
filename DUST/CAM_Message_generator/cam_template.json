@@ -23,7 +23,7 @@
         }
       },
       "highFrequencyContainer": [
-        "basicVehicleContainerHighFrequency", {
+        {
           "heading": {
             "headingValue": 3601,
             "headingConfidence": 127
