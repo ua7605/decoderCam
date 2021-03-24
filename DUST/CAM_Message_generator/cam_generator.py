@@ -21,8 +21,8 @@ class CamGenerator(object):
         i = 1
         while True:
             out = self.template_cam
-            #out['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
-            out['cam']['referencePosition']['altitude']['altitudeValue'] = i
+            out['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
+            #out['cam']['referencePosition']['altitude']['altitudeValue'] = i
             payload = bytes(self.cam_asn1.encode("CAM", out))
             self.agent_listener_dust.sent_custom_message(payload)
             time.sleep(1)
