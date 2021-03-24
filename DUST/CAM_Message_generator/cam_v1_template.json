@@ -1,0 +1,81 @@
+{
+  "cam": {
+    "protocolVersion": 2,
+    "messageID": 2,
+    "stationID": 1000000000,
+    "generationDeltaTime": 58993,
+    "stationType": 10,
+    "referencePosition": {
+      "longitude": 125213300,
+      "latitude": 556711480,
+      "positionConfidenceEllipse": {
+        "semiMajorOrientation": 3601,
+        "semiMajorConfidence": 4095,
+        "semiMinorConfidence": 4095
+      },
+      "altitude": {
+        "altitudeValue": 0,
+        "altitudeConfidence": 0
+      }
+    },
+    "heading": {
+      "headingValue": 0,
+      "headingConfidence": 10
+    },
+    "speed": {
+      "speedValue": 0,
+      "speedConfidence": 1
+    },
+    "driveDirection": 0,
+    "vehicleLength": {
+      "vehicleLengthValue": 1023,
+      "vehicleLengthConfidenceIndication": 0
+    },
+    "vehicleWidth": 62,
+    "curvature": {
+      "curvatureCalculationMode": 0,
+      "curvatureValue": 0,
+      "curvatureConfidence": 7
+    },
+    "yawRate": {
+      "yawRateValue": 32767
+    },
+    "vehicleRole": 6,
+    "pathHistory": [
+      {
+        "pathDeltaTime": 0,
+        "pathPosition": {
+          "deltaLongitude": 1800,
+          "deltaLatitude": 0,
+          "deltaAltitude": 1
+        }
+      },
+      {
+        "pathDeltaTime": 0,
+        "pathPosition": {
+          "deltaLongitude": 900,
+          "deltaLatitude": 0,
+          "deltaAltitude": 1
+        }
+      },
+      {
+        "pathDeltaTime": 0,
+        "pathPosition": {
+          "deltaLongitude": 0,
+          "deltaLatitude": 800,
+          "deltaAltitude": 1
+        }
+      },
+      {
+        "pathDeltaTime": 0,
+        "pathPosition": {
+          "deltaLongitude": 0,
+          "deltaLatitude": 245,
+          "deltaAltitude": 959
+        }
+      }
+    ],
+    "causeCode": 95,
+    "subCauseCode": 1
+  }
+}
