@@ -9,6 +9,6 @@ class Startup(Enum):
     CONFIG_FILE_READING_DONE = 5
 
 
-class keyword(Enum):
+class Keyword(Enum):
     true = "true"
     false = "false"

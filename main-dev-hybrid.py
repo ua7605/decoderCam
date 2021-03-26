@@ -6,7 +6,7 @@ import toml
 from DUST.agent_listener_dust import AgentListenerDust
 from DUST.CAM_Message_generator.cam_generator import CamGenerator
 from tools.startup_phase import Startup
-from tools.startup_phase import keyword
+from tools.startup_phase import Keyword
 
 if __name__ == "__main__":
 
@@ -34,18 +34,18 @@ if __name__ == "__main__":
         decoder: str = usage_config["cam_decoder"]
         cam_generator: str = usage_config["cam_generator"]
 
-        if decoder.__eq__(keyword.true.name) and cam_generator.__eq__(keyword.false.name):
+        if decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.false.name):
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
             while True:
                 time.sleep(1)
 
-        elif decoder.__eq__(keyword.false.name) and cam_generator.__eq__(keyword.true.name):
+        elif decoder.__eq__(Keyword.false.name) and cam_generator.__eq__(Keyword.true.name):
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             message_generator = CamGenerator(AgentListener=agent_dust)
             message_generator.start_custom_massaging()
 
-        elif decoder.__eq__(keyword.true.name) and cam_generator.__eq__(keyword.true.name):
+        elif decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.true.name):
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
             message_generator = CamGenerator(AgentListener=agent_dust)
