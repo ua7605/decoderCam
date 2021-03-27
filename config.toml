@@ -10,3 +10,4 @@ json_output_file_path = "/Users/vincentcharpentier/School/Master/MAP/Decoder/CAM
 [usage]
 cam_decoder = "false"
 cam_generator = "true"
+special_vehicle_service = "true"

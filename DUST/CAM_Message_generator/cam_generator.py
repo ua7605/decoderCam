@@ -30,3 +30,25 @@ class CamGenerator(object):
             i += 1
             print("sent to CAMINO")
             print(out)
+
+    def start_v2_custom_massaging(self, dir_name=dir_name):
+        i = 1
+        template_cam_json = os.path.join(dir_name, "cam_custom_template.json")  # "cam_template.json")
+        f = open(template_cam_json, "r")
+        self.template_cam = json.load(f)
+        while True:
+
+            custom = self.template_cam
+            custom['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
+            # out['cam']['referencePosition']['altitude']['altitudeValue'] = i
+            custom['cam']['camParameters']['highFrequencyContainer'] = (
+            'basicVehicleContainerHighFrequency', custom['cam']['camParameters']['highFrequencyContainer'][1])
+            custom['cam']['camParameters']['specialVehicleContainer'] = ('safetyCarContainer', custom['cam']['camParameters']['specialVehicleContainer'][1])
+            custom['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = (bytes(1), 1)
+
+            payload = bytes(self.cam_asn1.encode("CAM", custom))
+            self.agent_listener_dust.sent_custom_message(payload)
+            time.sleep(1)
+            i += 1
+            print("sent to CAMINO")
+            print(custom)

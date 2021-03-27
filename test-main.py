@@ -33,7 +33,7 @@ if __name__ == "__main__":
     # template_cam['cam']['camParameters']['lowFrequencyContainer'][1]['exteriorLights'] = bytes("fogLightOn",encoding='utf8'), template_cam['cam']['camParameters']['lowFrequencyContainer'][1]['exteriorLights']['fogLightOn']
     # template_cam['cam']['camParameters']['lowFrequencyContainer'][1]['exteriorLights'] = bytes("parkingLightsOn", encoding='utf8'), template_cam['cam']['camParameters']['lowFrequencyContainer'][1]['exteriorLights']['parkingLightsOn']
     template_cam['cam']['camParameters']['specialVehicleContainer'] = ('safetyCarContainer', template_cam['cam']['camParameters']['specialVehicleContainer'][1])
-    template_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = bitstring2tublebytelen('0')
+    template_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = (bytes(1),1)
     payload = cam_asn1.encode("CAM", template_cam)
     #encoded_cam = bytearray(payload)
     #print(payload)
