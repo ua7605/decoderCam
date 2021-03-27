@@ -1,0 +1,99 @@
+{
+  "header": {
+    "protocolVersion": 1,
+    "messageID": 2,
+    "stationID": 1},
+  "cam": {
+    "generationDeltaTime": 7912,
+    "camParameters": {
+      "basicContainer": {
+        "stationType": 15,
+        "referencePosition": {
+          "latitude": 512105933,
+          "longitude": 44665493,
+          "positionConfidenceEllipse": {
+            "semiMajorConfidence": 4095,
+            "semiMinorConfidence": 4095,
+            "semiMajorOrientation": 3601
+          },
+          "altitude": {
+            "altitudeValue": 800001,
+            "altitudeConfidence": "unavailable"
+          }
+        }
+      },
+      "highFrequencyContainer": [
+        "basicVehicleContainerHighFrequency", {
+          "heading": {
+            "headingValue": 3601,
+            "headingConfidence": 127
+          },
+          "speed": {
+            "speedValue": 16383,
+            "speedConfidence": 127
+          },
+          "driveDirection": "unavailable",
+          "vehicleLength": {
+            "vehicleLengthValue": 1023,
+            "vehicleLengthConfidenceIndication": "noTrailerPresent"
+          },
+          "vehicleWidth": 62,
+          "longitudinalAcceleration": {
+            "longitudinalAccelerationValue": 161,
+            "longitudinalAccelerationConfidence": 102
+          },
+          "curvature": {
+            "curvatureValue": 1023,
+            "curvatureConfidence": "unavailable"
+          },
+          "curvatureCalculationMode": "yawRateNotUsed",
+          "yawRate": {
+            "yawRateValue": 32767,
+            "yawRateConfidence": "unavailable"
+          },
+          "lanePosition": 1
+        }
+      ],
+      "lowFrequencyContainer": [
+        "basicVehicleContainerLowFrequency",{
+          "vehicleRole": "safetyCar",
+          "exteriorLights": {
+            "lowBeamHeadlightsOn": 0,
+            "highBeamHeadlightsOn": 0,
+            "leftTurnSignalOn": 0,
+            "rightTurnSignalOn": 0,
+            "daytimeRunningLightsOn": 1,
+            "reverseLightOn": 0,
+            "fogLightOn": 0,
+            "parkingLightsOn": 0
+          },
+          "pathHistory": [
+            {
+              "pathDeltaTime": 0,
+              "pathPosition": {
+              "deltaLongitude": 1800,
+              "deltaLatitude": 0,
+              "deltaAltitude": 1
+         }
+        }
+            ]
+        }
+      ],
+      "specialVehicleContainer": [
+        "safetyCarContainer",{
+          "lightBarSirenInUse": {
+            "lightBarActivated": 1,
+            "sirenActivated": 0
+          },
+          "incidentIndication": {
+            "causeCode": 94,
+            "subCauseCode": 1
+            },
+          "trafficRule": "passToLeft",
+          "speedLimit": 50
+          }
+
+      ]
+    }
+  }
+}
