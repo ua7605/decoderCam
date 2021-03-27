@@ -46,5 +46,24 @@ class AgentListenerDust(object):
         print("Starting to listen")
         self._register_listener()
 
+    def start_c(self):
+        print("Starting to listen")
+        self._register_listener_custom_message()
+
     def sent_custom_message(self, payload):
         self._sent_custom_message_to_camino(payload)
+
+    def _register_listener_custom_message(self):
+        self.dust_comm.register_listener("ivi_topic_out", self.incoming_DUST_custom_message)
+        print("listening on topic: ", "ivi_topic_out")
+
+    def incoming_DUST_custom_message(self, data_byte):
+        print("Message received!")
+        self.json_cam_message = self.dust_cam_decoder.decode_cam_message(message=data_byte, custom=True)
+        print("The decoded message is: ", self.json_cam_message)
+
+        if self.json_cam_message is not None:
+            self._sent_cam_data_to_server(json_cam_data=self.json_cam_message)
+        else:
+            print(
+                "There is a problem with it decoding the received message")  # TODO in the future change it to a proper logger

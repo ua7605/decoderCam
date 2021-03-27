@@ -35,10 +35,12 @@ if __name__ == "__main__":
         decoder: str = usage_config["cam_decoder"]
         cam_generator: str = usage_config["cam_generator"]
         is_service_sp_vehicle: str = usage_config["special_vehicle_service"]
+        true = Keyword.true.name
+        false = Keyword.false.name
 
         print("KIJK HIER VINCENT!!!!!!!!!!!!!!!!= "+is_service_sp_vehicle)
 
-        if decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.false.name):
+        if decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(false):
             #logging.warning("The decoder will be starting up")
 
             agent_dust = AgentListenerDust(configuration_toml=config_file)
@@ -46,7 +48,7 @@ if __name__ == "__main__":
             while True:
                 time.sleep(1)
 
-        elif decoder.__eq__(Keyword.false.name) and cam_generator.__eq__(Keyword.true.name):
+        elif decoder.__eq__(false) and cam_generator.__eq__(true) and is_service_sp_vehicle.__eq__(false):
             #logging.warning("The message generator service will be started")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             message_generator = CamGenerator(AgentListener=agent_dust)
@@ -55,7 +57,16 @@ if __name__ == "__main__":
             else:
                 message_generator.start_custom_massaging()
             message_generator.start_custom_massaging()
-        elif decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.true.name):
+
+        elif decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(true):
+            agent_dust = AgentListenerDust(configuration_toml=config_file)
+            # TODO: Make this more generic so solve the problem of the bit string field in the ASN file.
+            print("CUSTOM SERVICE RUNNING")
+            agent_dust.start_c()
+            while True:
+                time.sleep(1)
+
+        elif decoder.__eq__(true) and cam_generator.__eq__(true):
             #logging.warning("The message generator service and CAM decoding service will be started")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
