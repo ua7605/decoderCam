@@ -49,20 +49,21 @@ if __name__ == "__main__":
             logging.warning("The message generator service will be started")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             message_generator = CamGenerator(AgentListener=agent_dust)
-            if is_service_sp_vehicle.__eq__(Keyword.true.name):
-                message_generator.start_v2_custom_massaging()
-            else:
-                message_generator.start_custom_massaging()
-
+            # if is_service_sp_vehicle.__eq__(Keyword.true.name):
+            #     message_generator.start_v2_custom_massaging()
+            # else:
+            #     message_generator.start_custom_massaging()
+            message_generator.start_custom_massaging()
         elif decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.true.name):
             logging.warning("The message generator service and CAM decoding service will be started")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
             message_generator = CamGenerator(AgentListener=agent_dust)
-            if is_service_sp_vehicle.__eq__(Keyword.true.name):
-                message_generator.start_v2_custom_massaging()
-            else:
-                message_generator.start_custom_massaging()
+            # if is_service_sp_vehicle.__eq__(Keyword.true.name):
+            #     message_generator.start_v2_custom_massaging()
+            # else:
+            #     message_generator.start_custom_massaging()
+            message_generator.start_custom_massaging()
         else:
             logging.warning("Application stopped")
             sys.exit()

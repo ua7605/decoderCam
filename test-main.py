@@ -35,9 +35,11 @@ if __name__ == "__main__":
     template_cam['cam']['camParameters']['specialVehicleContainer'] = ('safetyCarContainer', template_cam['cam']['camParameters']['specialVehicleContainer'][1])
     template_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = (bytes(1),1)
     payload = cam_asn1.encode("CAM", template_cam)
+    payload_byt = bytes(cam_asn1.encode("CAM", template_cam))
+    encoded_cam = bytearray(payload_byt)
     #encoded_cam = bytearray(payload)
     #print(payload)
-    decoded_cam = cam_asn1.decode('CAM', payload)
+    decoded_cam = cam_asn1.decode('CAM', encoded_cam)
     #json_object_cam_message = json.dumps(decoded_cam)
 
     print(decoded_cam)
