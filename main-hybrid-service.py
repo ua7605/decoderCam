@@ -36,6 +36,8 @@ if __name__ == "__main__":
         cam_generator: str = usage_config["cam_generator"]
         is_service_sp_vehicle: str = usage_config["special_vehicle_service"]
 
+        print("KIJK HIER VINCENT!!!!!!!!!!!!!!!!= "+is_service_sp_vehicle)
+
         if decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.false.name):
             #logging.warning("The decoder will be starting up")
 
