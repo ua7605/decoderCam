@@ -2,6 +2,7 @@ import sys
 import time
 
 import toml
+import logging
 
 from DUST.agent_listener_dust import AgentListenerDust
 from DUST.CAM_Message_generator.cam_generator import CamGenerator
@@ -10,6 +11,7 @@ from tools.startup_phase import Keyword
 
 if __name__ == "__main__":
 
+    logging.basicConfig(format='%(asctime)s %(message)s')
     configuration_toml_file = "config.toml"
     current_phase = Startup.CONFIG_FILE_CHECK.value
 
@@ -35,6 +37,7 @@ if __name__ == "__main__":
         cam_generator: str = usage_config["cam_generator"]
 
         if decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.false.name):
+            logging.warning("The decoder will be starting up")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
             while True:
