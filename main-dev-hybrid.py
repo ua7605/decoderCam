@@ -15,16 +15,16 @@ if __name__ == "__main__":
     configuration_toml_file = "config.toml"
     current_phase = Startup.CONFIG_FILE_CHECK.value
 
-    print(current_phase)
-
     if Startup.CONFIG_FILE_CHECK.value.__eq__(current_phase):
-        print("Works")
+
         try:
             with open(configuration_toml_file) as file:
                 config_file = toml.load(f=file)
                 current_phase = Startup.CONFIG_FILE_READING.value
+                logging.warning("Configuration file is successfully being read")
         except:
-            print("File doesn't exists: "+configuration_toml_file)
+            logging.error("File doesn't exists: "+configuration_toml_file)
+            #print("File doesn't exists: "+configuration_toml_file)
             sys.exit()
 
     if Startup.CONFIG_FILE_READING.value.__eq__(current_phase):
@@ -38,6 +38,7 @@ if __name__ == "__main__":
 
         if decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.false.name):
             logging.warning("The decoder will be starting up")
+
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
             while True:
