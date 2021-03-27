@@ -51,6 +51,7 @@ if __name__ == "__main__":
             message_generator.start_custom_massaging()
 
         elif decoder.__eq__(Keyword.true.name) and cam_generator.__eq__(Keyword.true.name):
+            logging.warning("The message generator service and CAM decoding service will be started")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             agent_dust.start()
             message_generator = CamGenerator(AgentListener=agent_dust)
