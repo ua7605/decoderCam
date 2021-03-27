@@ -15,9 +15,9 @@ class DUSTCamDecoder(object):
         print(encoded_cam)
         print("THE ERROR IS HERE!!!!!!")
         decoded_cam = self.cam.decode('CAM', encoded_cam)
-        print("DO WE COME HERE STLL VINCENT ??????")
-        print("Decoded CAM: "+decoded_cam)
+
         json_object_cam_message = json.dumps(decoded_cam)
+        print("DO WE COME HERE STLL VINCENT ??????")
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
         return json_object_cam_message
 
