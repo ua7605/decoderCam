@@ -13,7 +13,6 @@ class DUSTCamDecoder(object):
         # TODO Make it possible to distinguish CAM, DENM and IVI messages
         encoded_cam = bytearray(message)
         print(encoded_cam)
-        print("THE ERROR IS HERE!!!!!!")
         decoded_cam = self.cam.decode('CAM', encoded_cam)
         json_object_cam_message = json.dumps(decoded_cam)
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
