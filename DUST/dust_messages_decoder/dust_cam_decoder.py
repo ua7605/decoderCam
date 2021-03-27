@@ -18,6 +18,7 @@ class DUSTCamDecoder(object):
         decoded_cam = self.cam.decode('CAM', encoded_cam)
         print("C: Do you come still here?")
         print(decoded_cam)
+        decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = 1
         json_object_cam_message = json.dumps(decoded_cam)
         print("D: Do you come still here?")
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
