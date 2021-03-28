@@ -52,7 +52,7 @@ class DUSTCamDecoder(object):
         sub_cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['subCauseCode']
         print(sub_cause_code)
 
-        traffic_rule = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['passToLeft']
+        traffic_rule = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['trafficRule']
         print(str(traffic_rule))
 
         speed_limit = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['speedLimit']
