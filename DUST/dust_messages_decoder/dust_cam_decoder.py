@@ -44,7 +44,7 @@ class DUSTCamDecoder(object):
         print(speed_value)
 
         speed_confidence = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedConfidence']
-        print("speed_confidence : "+speed_confidence)
+        print(str(speed_confidence))
 
         cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['causeCode']
         print(cause_code)
