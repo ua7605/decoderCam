@@ -41,10 +41,10 @@ class DUSTCamDecoder(object):
     def get_parameters_for_special_vehicle_service(self, decoded_cam):
         speed_value = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedValue']
         speed_confidence = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedConfidence']
-        cause_code = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['incidentIndication']['causeCode']
-        sub_cause_code = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['incidentIndication']['subCauseCode']
-        traffic_rule = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['passToLeft']
-        speed_limit = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speedLimit']
+        cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['causeCode']
+        sub_cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['subCauseCode']
+        traffic_rule = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['passToLeft']
+        speed_limit = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['speedLimit']
         message: str = speed_value+","+speed_confidence+","+cause_code+","+sub_cause_code+","+traffic_rule+","+speed_limit
         print(message)
         return message
