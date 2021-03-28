@@ -39,7 +39,10 @@ class DUSTCamDecoder(object):
             print("It is written to the file!!!! ")
 
     def get_parameters_for_special_vehicle_service(self, decoded_cam):
+        print("In parsing!!!!!!!!!")
         speed_value = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedValue']
+
+        print(speed_value)
         speed_confidence = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedConfidence']
         cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['causeCode']
         sub_cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['subCauseCode']
