@@ -23,6 +23,7 @@ class DUSTCamDecoder(object):
             decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = 1
             json_object_cam_message = json.dumps(decoded_cam)
             self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
+            print("Successfully written to file")
 
             return self.get_parameters_for_special_vehicle_service(decoded_cam)
 
