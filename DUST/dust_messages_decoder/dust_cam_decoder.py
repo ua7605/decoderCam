@@ -53,7 +53,7 @@ class DUSTCamDecoder(object):
         print(sub_cause_code)
 
         traffic_rule = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['passToLeft']
-        print(sub_cause_code)
+        print(str(traffic_rule))
 
         speed_limit = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['speedLimit']
         print(str(speed_limit))
