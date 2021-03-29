@@ -12,3 +12,11 @@ class Startup(Enum):
 class Keyword(Enum):
     true = "true"
     false = "false"
+
+
+class LightBar(Enum):
+    LIGHT_BAR_ACTIVATED = (b'\x80', 2)
+    SIREN_ACTIVATED = (b'\x40', 2)
+    SIREN_ACTIVATED_DEC = (b'@', 2)
+    BOTH = (b'\xC0', 2)
+    NONE = (b'\x00', 2)

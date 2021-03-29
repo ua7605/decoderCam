@@ -38,8 +38,6 @@ if __name__ == "__main__":
         true = Keyword.true.name
         false = Keyword.false.name
 
-        print("KIJK HIER VINCENT!!!!!!!!!!!!!!!!= "+is_service_sp_vehicle)
-
         if decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(false):
             #logging.warning("The decoder will be starting up")
 
@@ -48,12 +46,12 @@ if __name__ == "__main__":
             while True:
                 time.sleep(1)
 
-        elif decoder.__eq__(false) and cam_generator.__eq__(true) and is_service_sp_vehicle.__eq__(false):
+        elif decoder.__eq__(false) and cam_generator.__eq__(true):
             #logging.warning("The message generator service will be started")
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             message_generator = CamGenerator(AgentListener=agent_dust)
             if is_service_sp_vehicle.__eq__(Keyword.true.name):
-                message_generator.start_v2_custom_massaging()
+                message_generator.start_special_vehicle_service_massaging()
             else:
                 message_generator.start_custom_massaging()
             message_generator.start_custom_massaging()
@@ -72,7 +70,7 @@ if __name__ == "__main__":
             agent_dust.start()
             message_generator = CamGenerator(AgentListener=agent_dust)
             if is_service_sp_vehicle.__eq__(Keyword.true.name):
-                message_generator.start_v2_custom_massaging()
+                message_generator.start_special_vehicle_service_massaging_old()
             else:
                 message_generator.start_custom_massaging()
             message_generator.start_custom_massaging()

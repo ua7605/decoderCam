@@ -3,6 +3,9 @@ import json
 
 
 # TODO: Add a logger, switch every print statement to a log statement
+from tools.startup_phase import LightBar
+
+
 class DUSTCamDecoder(object):
 
     def __init__(self, file_path_to_output_json_file):
@@ -13,24 +16,18 @@ class DUSTCamDecoder(object):
     def decode_cam_message(self, message, custom=False):
         # TODO Make it possible to distinguish CAM, DENM and IVI messages
         encoded_cam = bytearray(message)
-        print("A: Do you come still here?")
-        print(encoded_cam)
-        print("B: Do you come still here?")
         decoded_cam = self.cam.decode('CAM', encoded_cam)
-        print("C: Do you come still here?")
         print(decoded_cam)
         if custom:
-            decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = 1
+            #decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = 1
             json_object_cam_message = json.dumps(decoded_cam)
             self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
             print("Successfully written to file")
 
-            return self.get_parameters_for_special_vehicle_service(decoded_cam)
+            return self.decode_parameters_for_special_vehicle_service(decoded_cam)
 
         json_object_cam_message = json.dumps(decoded_cam)
-        print("D: Do you come still here?")
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
-        print("E: Do you come still here?")
         return json_object_cam_message
 
     def _write_it_to_json_file(self, cam_message_json_format):
@@ -38,26 +35,47 @@ class DUSTCamDecoder(object):
             output_json_file.write(cam_message_json_format)
             print("It is written to the file!!!! ")
 
-    def get_parameters_for_special_vehicle_service(self, decoded_cam):
-        print("In parsing!!!!!!!!!")
+    def decode_parameters_for_special_vehicle_service(self, decoded_cam):
         speed_value: int = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedValue']
-        print(speed_value)
 
         speed_confidence = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedConfidence']
-        print(str(speed_confidence))
 
         cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['causeCode']
-        print(cause_code)
 
         sub_cause_code = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['incidentIndication']['subCauseCode']
-        print(sub_cause_code)
 
         traffic_rule = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['trafficRule']
-        print(str(traffic_rule))
 
         speed_limit = decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['speedLimit']
-        print(str(speed_limit))
 
-        message: str = str(speed_value)+","+str(speed_confidence)+","+str(cause_code)+","+str(sub_cause_code)+","+traffic_rule+","+str(speed_limit)
+        siren_activated, light_bar_activated = self._decode_status_light_bar_siren_in_use(light_bar_siren_in_use=decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'], decode_cam=decoded_cam)
+
+        message: str = str(speed_value)+","+str(speed_confidence)+","+str(cause_code)+","+str(sub_cause_code)+","+traffic_rule+","+str(speed_limit)+","+str(siren_activated)+","+str(light_bar_activated)
         print(message)
         return message
+
+    def _decode_status_light_bar_siren_in_use(self, light_bar_siren_in_use, decode_cam):
+
+        if light_bar_siren_in_use.__eq__(LightBar.SIREN_ACTIVATED_DEC.value):
+            siren_activated: int = 1
+            light_bar_activated: int = 0
+        elif light_bar_siren_in_use.__eq__(LightBar.LIGHT_BAR_ACTIVATED.value):
+            siren_activated: int = 0
+            light_bar_activated: int = 1
+        elif light_bar_siren_in_use.__eq__(LightBar.BOTH.value):
+            siren_activated: int = 1
+            light_bar_activated: int = 1
+        elif light_bar_siren_in_use.__eq__(LightBar.NONE.value):
+            siren_activated: int = 0
+            light_bar_activated: int = 0
+        else:
+            siren_activated: int = 0
+            light_bar_activated: int = 0
+        decode_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = \
+            {
+            'lightBarActivated': light_bar_activated,
+            'sirenActivated': siren_activated
+            }
+        return siren_activated, light_bar_activated
+
+
