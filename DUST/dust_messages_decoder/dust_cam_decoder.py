@@ -20,11 +20,12 @@ class DUSTCamDecoder(object):
         print(decoded_cam)
         if custom:
             #decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = 1
+            ms = self.decode_parameters_for_special_vehicle_service(decoded_cam)
             json_object_cam_message = json.dumps(decoded_cam)
             self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
             print("Successfully written to file")
 
-            return self.decode_parameters_for_special_vehicle_service(decoded_cam)
+            return ms
 
         json_object_cam_message = json.dumps(decoded_cam)
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
