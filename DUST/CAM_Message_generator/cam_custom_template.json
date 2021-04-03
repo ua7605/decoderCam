@@ -7,7 +7,7 @@
     "generationDeltaTime": 7912,
     "camParameters": {
       "basicContainer": {
-        "stationType": 15,
+        "stationType": 10,
         "referencePosition": {
           "latitude": 512105933,
           "longitude": 44665493,

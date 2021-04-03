@@ -26,6 +26,9 @@ class CamGenerator(object):
         is_run = True
         while is_run:
             custom = self.template_cam
+            stationID = custom['header']['stationID']
+            stationType = custom['cam']['camParameters']['basicContainer']['stationType']
+            print("Het stationID = ", stationID, " Het stationType = ", stationType)
             custom['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
             custom['cam']['camParameters']['highFrequencyContainer'] = (
             'basicVehicleContainerHighFrequency', custom['cam']['camParameters']['highFrequencyContainer'][1])
@@ -45,7 +48,7 @@ class CamGenerator(object):
             print("Siren: ", sire, " lightbar ", light_bar)
             json_object_cam_message = json.dumps(decoded_cam)
 
-            is_run = False
+            is_run = True
             # print(decoded_cam)
 
     def _light_bar_siren_in_use(self, message):

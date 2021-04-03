@@ -28,7 +28,17 @@
             "host_server": true,
             "publish": true
           }
+        },
+        "special-vehicle-topic-decoder": {
+          "transport": {
+            "type": "zeromq",
+            "publish": true,
+            "host_server": false,
+            "host": "tcp://127.0.0.1:7002",
+            "topic": "special-vehicle-topic-decoder"
+          }
         }
+
       }
     }
   }

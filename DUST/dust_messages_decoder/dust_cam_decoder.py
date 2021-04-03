@@ -20,16 +20,16 @@ class DUSTCamDecoder(object):
         print(decoded_cam)
         if custom:
             #decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'] = 1
+            station_type: int = decoded_cam['cam']['camParameters']['basicContainer']['stationType']
             ms = self.decode_parameters_for_special_vehicle_service(decoded_cam)
             json_object_cam_message = json.dumps(decoded_cam)
             self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
             print("Successfully written to file")
-
-            return ms
+            return ms, station_type
 
         json_object_cam_message = json.dumps(decoded_cam)
         self._write_it_to_json_file(cam_message_json_format=json_object_cam_message)
-        return json_object_cam_message
+        return json_object_cam_message, 1
 
     def _write_it_to_json_file(self, cam_message_json_format):
         with open(self.json_file, 'w') as output_json_file:
@@ -37,6 +37,11 @@ class DUSTCamDecoder(object):
             print("It is written to the file!!!! ")
 
     def decode_parameters_for_special_vehicle_service(self, decoded_cam):
+
+        station_id = decoded_cam['header']['stationID']
+
+        station_type = decoded_cam['cam']['camParameters']['basicContainer']['stationType']
+
         speed_value: int = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedValue']
 
         speed_confidence = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedConfidence']
@@ -51,7 +56,7 @@ class DUSTCamDecoder(object):
 
         siren_activated, light_bar_activated = self._decode_status_light_bar_siren_in_use(light_bar_siren_in_use=decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'], decode_cam=decoded_cam)
 
-        message: str = str(speed_value)+","+str(speed_confidence)+","+str(cause_code)+","+str(sub_cause_code)+","+traffic_rule+","+str(speed_limit)+","+str(siren_activated)+","+str(light_bar_activated)
+        message: str = str(station_id)+","+str(station_type)+","+str(speed_value)+","+str(speed_confidence)+","+str(cause_code)+","+str(sub_cause_code)+","+traffic_rule+","+str(speed_limit)+","+str(siren_activated)+","+str(light_bar_activated)
         print(message)
         return message
 
