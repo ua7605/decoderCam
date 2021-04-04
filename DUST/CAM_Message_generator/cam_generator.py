@@ -47,7 +47,7 @@ class CamGenerator(object):
 
             # Just for testing to mimic the effect if multiple awarness message are being received from multiple special
             # vehicles
-            custom['header']['stationID'] = i
+            #custom['header']['stationID'] = i
 
             payload = bytes(self.cam_asn1.encode("CAM", custom))
             self.agent_listener_dust.sent_custom_message(payload)
