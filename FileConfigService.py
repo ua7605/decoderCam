@@ -6,7 +6,6 @@ class FileConfig:
         return cls.instance
 
     def __init__(self, file_path_to_csv_file, output_file_json):
-        #print("Hier kom je nog !!!!")
         self.file_path_to_csv_file = file_path_to_csv_file
         self.output_file_json = output_file_json
 
