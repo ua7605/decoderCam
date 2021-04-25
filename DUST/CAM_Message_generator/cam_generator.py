@@ -25,7 +25,7 @@ class CamGenerator(object):
             out['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
 
             out['cam']['camParameters']['highFrequencyContainer'] = (
-            'basicVehicleContainerHighFrequency', out['cam']['camParameters']['highFrequencyContainer'][1])
+                'basicVehicleContainerHighFrequency', out['cam']['camParameters']['highFrequencyContainer'][1])
             payload = bytes(self.cam_asn1.encode("CAM", out))
             self.agent_listener_dust.sent_custom_message(payload)
             time.sleep(1)
@@ -47,7 +47,7 @@ class CamGenerator(object):
 
             # Just for testing to mimic the effect if multiple awarness message are being received from multiple special
             # vehicles
-            #custom['header']['stationID'] = i
+            # custom['header']['stationID'] = i
 
             payload = bytes(self.cam_asn1.encode("CAM", custom))
             self.agent_listener_dust.sent_custom_message(payload)
@@ -59,16 +59,17 @@ class CamGenerator(object):
     def _service_setup(self):
         self.template_cam['cam']['camParameters']['highFrequencyContainer'] = \
             (
-            'basicVehicleContainerHighFrequency',
-            self.template_cam['cam']['camParameters']['highFrequencyContainer'][1]
+                'basicVehicleContainerHighFrequency',
+                self.template_cam['cam']['camParameters']['highFrequencyContainer'][1]
             )
 
         self.template_cam['cam']['camParameters']['specialVehicleContainer'] = \
             (
-            'safetyCarContainer', self.template_cam['cam']['camParameters']['specialVehicleContainer'][1]
+                'safetyCarContainer', self.template_cam['cam']['camParameters']['specialVehicleContainer'][1]
             )
 
-        self._light_bar_siren_in_use(message=self.template_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'])
+        self._light_bar_siren_in_use(
+            message=self.template_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'])
 
     def _light_bar_siren_in_use(self, message):
         print("message: ", message)
@@ -88,10 +89,6 @@ class CamGenerator(object):
         else:
             self.template_cam['cam']['camParameters']['specialVehicleContainer'][1][
                 'lightBarSirenInUse'] = LightBar.NONE.value
-
-
-
-
 
     def start_special_vehicle_service_massaging_old(self, dir_name=dir_name):
         i = 1
