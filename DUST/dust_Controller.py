@@ -1,10 +1,9 @@
 import time
 
-
-# Make sure you comment this out when you are in a production
 from pydust import core
 
 
+# TODO: change every print statement with a logger.
 class DUSTController(object):
     @staticmethod
     def load_from_config(configuration):
