@@ -7,6 +7,7 @@ from DUST.agent_listener_dust import AgentListenerDust
 from tools.startup_phase import LightBar
 
 
+# TODO: Add in the future from the GPS location the longitude and latitude with the messages.
 class CamGenerator(object):
     dir_name = os.path.dirname(__file__)
 
@@ -38,7 +39,6 @@ class CamGenerator(object):
         template_cam_json = os.path.join(dir_name, "cam_custom_template.json")  # "cam_template.json")
         f = open(template_cam_json, "r")
         self.template_cam = json.load(f)
-
         self._service_setup()
 
         while True:
