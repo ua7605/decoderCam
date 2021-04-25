@@ -1,6 +1,4 @@
-import sys
 import time
-
 import toml
 
 from DUST.agent_listener_dust import AgentListenerDust
