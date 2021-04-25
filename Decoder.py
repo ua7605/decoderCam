@@ -1,6 +1,5 @@
 import asn1tools
 import json
-import mpu.io
 
 from csvReader import CsvReader
 
