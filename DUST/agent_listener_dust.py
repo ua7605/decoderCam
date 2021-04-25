@@ -3,10 +3,12 @@ import time
 from DUST.dust_Controller import DUSTController
 from DUST.dust_messages_decoder.dust_cam_decoder import DUSTCamDecoder
 
+
 # Tested on Testbed and it works!
 # With this everything DUST related will started so just make a object of this class and interact with the agent.
 class AgentListenerDust(object):
     special_vehicle: int = 10
+
     def __init__(self, configuration_toml):
         self.dust_comm: DUSTController = DUSTController.load_from_config(configuration=configuration_toml)
         output_file = configuration_toml["output_files"]
@@ -42,8 +44,6 @@ class AgentListenerDust(object):
         payload = json_cam_data.encode("ascii")
         self.dust_comm.publish(topic="special-vehicle-topic-decoder",
                                message=payload)
-
-
 
     def _sent_custom_message_to_camino(self, payload):
         self.dust_comm.publish(topic="cam_topic_in", message=payload)
