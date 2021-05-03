@@ -18,7 +18,7 @@ class GPS(object):
     def __init__(self, host_ip: str, port: int, dust_communication: AgentListenerDust):
         print("Connecting to GPS....")
         gpsd.connect(host=host_ip, port=port)
-        print("Connected to GPS ! "+host_ip+" "+"port: "+port)
+        print("Connected to GPS ! ",host_ip," port: ", port)
         self.dust_agent: AgentListenerDust = dust_communication
 
     def track(self):
