@@ -24,8 +24,6 @@ class GPS(object):
     def track(self):
         while True:
             pack = gpsd.get_current()
-            print(pack.lat)
-            print(pack.lon)
-            payload: str = str(pack.lon)+","+str(pack.lat)
+            payload: str = str(pack.lat)+","+str(pack.lon)
             self.dust_agent._sent_gps_data_to_server(payload)
             time.sleep(1)
