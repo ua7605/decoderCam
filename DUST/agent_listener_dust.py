@@ -42,9 +42,9 @@ class AgentListenerDust(object):
 
     def _sent_gps_data_to_server(self, gps_data: str):
         payload = gps_data.encode("ascii")
-        print("GPS data has been sent over topic: GPS with: "+gps_data)
         self.dust_comm.publish(topic="GPS",
                                message=payload)
+        print("GPS data has been sent over topic: GPS with: " + gps_data)
 
 
 
