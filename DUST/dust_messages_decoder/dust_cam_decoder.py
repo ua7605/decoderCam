@@ -42,6 +42,10 @@ class DUSTCamDecoder(object):
 
         station_type = decoded_cam['cam']['camParameters']['basicContainer']['stationType']
 
+        lat = decoded_cam['cam']['camParameters']['basicContainer']['referencePosition']['latitude']
+
+        log = decoded_cam['cam']['camParameters']['basicContainer']['referencePosition']['longitude']
+
         speed_value: int = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedValue']
 
         speed_confidence = decoded_cam['cam']['camParameters']['highFrequencyContainer'][1]['speed']['speedConfidence']
@@ -56,7 +60,7 @@ class DUSTCamDecoder(object):
 
         siren_activated, light_bar_activated = self._decode_status_light_bar_siren_in_use(light_bar_siren_in_use=decoded_cam['cam']['camParameters']['specialVehicleContainer'][1]['lightBarSirenInUse'], decode_cam=decoded_cam)
 
-        message: str = str(station_id)+","+str(station_type)+","+str(speed_value)+","+str(speed_confidence)+","+str(cause_code)+","+str(sub_cause_code)+","+traffic_rule+","+str(speed_limit)+","+str(siren_activated)+","+str(light_bar_activated)
+        message: str = str(station_id)+","+str(station_type)+","+str(speed_value)+","+str(speed_confidence)+","+str(cause_code)+","+str(sub_cause_code)+","+traffic_rule+","+str(speed_limit)+","+str(siren_activated)+","+str(light_bar_activated)+","+str(lat)+","+str(log)
         print(message)
         return message
 

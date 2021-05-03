@@ -30,6 +30,12 @@ class CamGenerator(object):
             stationType = custom['cam']['camParameters']['basicContainer']['stationType']
             print("Het stationID = ", stationID, " Het stationType = ", stationType)
             custom['header']['stationID'] = i
+            lat = custom['cam']['camParameters']['basicContainer']['referencePosition']['latitude']
+            log = custom['cam']['camParameters']['basicContainer']['referencePosition']['longitude']
+
+            print("lat = ", lat)
+            print("log = ", log)
+
             custom['cam']['camParameters']['basicContainer']['referencePosition']['altitude']['altitudeValue'] = i
             custom['cam']['camParameters']['highFrequencyContainer'] = (
             'basicVehicleContainerHighFrequency', custom['cam']['camParameters']['highFrequencyContainer'][1])
