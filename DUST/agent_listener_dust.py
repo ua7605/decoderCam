@@ -1,4 +1,6 @@
 import time
+import threading
+import gpsd
 
 from DUST.dust_Controller import DUSTController
 from DUST.dust_messages_decoder.dust_cam_decoder import DUSTCamDecoder
@@ -37,6 +39,15 @@ class AgentListenerDust(object):
         payload = json_cam_data.encode("ascii")
         self.dust_comm.publish(topic="CAM-topic-decoder",
                                message=payload)  # Todo Make a DUST channel topic: "CAM-topic-decoder" such that the Server can receive it is done
+
+    def _sent_gps_data_to_server(self, gps_data: str):
+        payload = gps_data.encode("ascii")
+        print("GPS data has been sent over topic: GPS with: "+gps_data)
+        self.dust_comm.publish(topic="GPS",
+                               message=payload)
+
+
+
 
     def _sent_special_vehicle_data_to_server(self, json_cam_data):
         print("data of !!!SPECIAL vehicle!!! will be sent to the server!")
@@ -83,3 +94,4 @@ class AgentListenerDust(object):
         else:
             print(
                 "There is a problem with it decoding the received message")  # TODO in the future change it to a proper logger
+

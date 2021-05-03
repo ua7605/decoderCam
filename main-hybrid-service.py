@@ -2,9 +2,11 @@ import sys
 import time
 import toml
 # import logging
+import threading
 
 from DUST.agent_listener_dust import AgentListenerDust
 from DUST.CAM_Message_generator.cam_generator import CamGenerator
+from GPS.real_time_gps_data import GPS
 from tools.startup_phase import Startup
 from tools.startup_phase import Keyword
 
@@ -37,6 +39,11 @@ if __name__ == "__main__":
         true = Keyword.true.name
         false = Keyword.false.name
 
+        GPS_config = config_file["GPS"]
+        GPS_enabled: str = GPS_config["GPS_enabled"]
+        GPS_host_ip: str = GPS_config["GPS_host_ip"]
+        GPS_port: int = GPS_config["GPS_port"]
+
         if decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(false):
             # logging.warning("The decoder will be starting up")
 
@@ -55,11 +62,22 @@ if __name__ == "__main__":
                 message_generator.start_custom_massaging()
             message_generator.start_custom_massaging()
 
-        elif decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(true):
+        elif decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(true) and GPS_enabled.__eq__(false):
             agent_dust = AgentListenerDust(configuration_toml=config_file)
             # TODO: Make this more generic so solve the problem of the bit string field in the ASN file.
             print("CUSTOM SERVICE RUNNING")
             agent_dust.start_c()
+            while True:
+                time.sleep(1)
+
+        elif decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(true) and GPS_enabled.__eq__(true):
+            agent_dust = AgentListenerDust(configuration_toml=config_file)
+            # TODO: Make this more generic so solve the problem of the bit string field in the ASN file.
+            print("CUSTOM SERVICE RUNNING")
+            agent_dust.start_c()
+            gps: GPS = GPS.load_from_config(configuration=config_file, agent_listener_dust=agent_dust)
+            t1 = threading.Thread(target=gps.track)
+            t1.start()
             while True:
                 time.sleep(1)
 

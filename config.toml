@@ -11,4 +11,8 @@ json_output_file_path = "/Users/vincentcharpentier/School/Master/MAP/Decoder/cam
 cam_decoder = "false"
 cam_generator = "true"
 special_vehicle_service = "true"
+
+[GPS]
 GPS_enabled = "true"
+GPS_host_ip = "143.129.82.170"
+GPS_port = 2947
