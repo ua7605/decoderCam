@@ -25,5 +25,6 @@ class GPS(object):
         while True:
             pack = gpsd.get_current()
             payload: str = str(pack.lat)+","+str(pack.lon)
+            print(payload)
             self.dust_agent._sent_gps_data_to_server(payload)
             time.sleep(1)
