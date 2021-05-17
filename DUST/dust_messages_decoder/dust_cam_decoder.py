@@ -2,19 +2,30 @@ import asn1tools
 import json
 
 
-# TODO: Add a logger, switch every print statement to a log statement
 from tools.startup_phase import LightBar
 
 
 class DUSTCamDecoder(object):
-
+    """
+    Class to implement a CAM decoder that makes use of DUST.
+    """
     def __init__(self, file_path_to_output_json_file):
+        """
+        :param file_path_to_output_json_file: file paht to the cam.json file were the decoded CAM messages can be sent
+        to.
+        """
         self.cam = asn1tools.compile_files('./cam121.asn', 'uper')
         self.json_file = file_path_to_output_json_file
         print("Decoder is ready")
 
     def decode_cam_message(self, message, custom=False):
-        # TODO Make it possible to distinguish CAM, DENM and IVI messages
+        """
+        Method used to decode a CAM message that comes from the CAMINO DUST channel.
+        :param message: containing the CAM content form CAMINO in bytes.
+        :param custom: True if the decoder needs to decode CAM message from special vehicles otherwise False.
+        :return:
+        """
+        # TODO Make it possible to distinguish CAM, DENM and IVI messages => Future work.
         encoded_cam = bytearray(message)
         decoded_cam = self.cam.decode('CAM', encoded_cam)
         print(decoded_cam)
@@ -32,11 +43,20 @@ class DUSTCamDecoder(object):
         return json_object_cam_message, 1
 
     def _write_it_to_json_file(self, cam_message_json_format):
+        """
+        Writes the decoded CAM messages to a json file.
+        :param cam_message_json_format: the decoded CAM message in JSON format
+        """
         with open(self.json_file, 'w') as output_json_file:
             output_json_file.write(cam_message_json_format)
             print("It is written to the file!!!! ")
 
     def decode_parameters_for_special_vehicle_service(self, decoded_cam):
+        """
+        Decodes the special vehicle container of the received CAM message.
+        :param decoded_cam: messages.
+        :return: the decoded content of the special vehicle container of the CAM messages.
+        """
 
         station_id = decoded_cam['header']['stationID']
 
@@ -65,7 +85,12 @@ class DUSTCamDecoder(object):
         return message
 
     def _decode_status_light_bar_siren_in_use(self, light_bar_siren_in_use, decode_cam):
-
+        """
+        Method to decode form the special vehcile container the light bar and siren field to look if they are in use.
+        :param light_bar_siren_in_use: value of decode context.
+        :param decode_cam: to add the values of the light bar and siren on to.
+        :return: the values that of light bar and siren that were set in the original CAM message.
+        """
         if light_bar_siren_in_use.__eq__(LightBar.SIREN_ACTIVATED_DEC.value):
             siren_activated: int = 1
             light_bar_activated: int = 0
