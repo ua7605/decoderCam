@@ -3,10 +3,18 @@ import time
 from pydust import core
 
 
-# TODO: change every print statement with a logger.
 class DUSTController(object):
+    """
+        The DUSTController class to make an object of the DUST core to make it possible to use DUST communication.
+    """
+
     @staticmethod
     def load_from_config(configuration):
+        """
+        To make a DUST object directly via a configuration file.
+        :param configuration: An absolute path to the configuration file in this case a Toml file.
+
+        """
         dust_config = configuration["DUST"]
 
         name = dust_config["application_name"]
@@ -17,6 +25,12 @@ class DUSTController(object):
                               dust_module_dir=module_dir)
 
     def __init__(self, name, config_file="configuration.json", dust_module_dir="./modules"):
+        """
+        :param name: The name of the core, needs to match the block name in the config file
+        :param config_file: An absolute path to the configuration file
+        :param dust_module_dir: An absolute path to the module folder
+
+        """
         # initialises the core with the given block name and the directory where the modules are located (default
         # "./modules")
         print("config_file: ", config_file)
@@ -41,11 +55,27 @@ class DUSTController(object):
         print("DUST is launched properly")
 
     def shutdown(self):
+        """
+        Shutdowns the DUST core.
+        """
         self.dust_core.disconnect()
         self.dust_core.cycle_stop()
 
     def publish(self, topic, message):
+        """
+        Publish data over a specific topic/channel over DUST.
+
+        :param topic: The name of the channel, as defined in the config file.
+        :param message: The message to be sent
+        """
         self.dust_core.publish(topic, message)
 
     def register_listener(self, topic, func):
+        """
+        Register a callback when a message has been received over a specific DUST channel. Every time a message on that
+        topic will be received the function (func) will be executed.
+
+        :param topic: The name of the channel, as defined in the config file.
+        :param func: function that needs to be executed when a DUST message has been received
+        """
         self.dust_core.register_listener(topic, func)
