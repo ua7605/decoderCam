@@ -1,9 +1,9 @@
-import sys, os.path, time, logging
+import os.path, time, logging
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-from FileConfigService import FileConfig
-from Decoder import CamDecoder
+from deprecated_files.FileConfigService import FileConfig
+from deprecated_files.Decoder import CamDecoder
 
 
 class MyEventHandler(PatternMatchingEventHandler):

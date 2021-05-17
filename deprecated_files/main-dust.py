@@ -8,7 +8,7 @@ if __name__ == "__main__":
     this main is meant to be used if you want to read out the CAMINO log files for CAM then you need to start this main.
     """
 
-    configuration_toml_file = "config.toml"
+    configuration_toml_file = "../config.toml"
     with open(configuration_toml_file) as file:
         config_file = toml.load(f=file)
         is_true = True

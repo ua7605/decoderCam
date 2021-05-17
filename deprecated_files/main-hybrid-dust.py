@@ -8,7 +8,7 @@ from DUST.CAM_Message_generator.cam_generator import CamGenerator
 
 if __name__ == "__main__":
 
-    configuration_toml_file = "config.toml"
+    configuration_toml_file = "../config.toml"
     with open(configuration_toml_file) as file:
         config_file = toml.load(f=file)
         is_true = True

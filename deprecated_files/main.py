@@ -3,7 +3,6 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import watchFileService
-from Decoder import CamDecoder
 import sys, getopt
 # if __name__ == '__main__':
 #

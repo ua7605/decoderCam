@@ -1,7 +1,7 @@
 import asn1tools
 import json
 
-from csvReader import CsvReader
+from deprecated_files.csvReader import CsvReader
 
 
 class CamDecoder:
