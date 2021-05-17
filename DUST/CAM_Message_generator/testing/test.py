@@ -7,6 +7,9 @@ from tools.startup_phase import LightBar
 
 
 class CamGenerator(object):
+    """
+    This is just a test class to make the development easier such you not always need to go to the SMH.
+    """
     dir_name = os.path.dirname(__file__)
 
     def __init__(self, dir_name=dir_name):
