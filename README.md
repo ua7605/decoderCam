@@ -1,6 +1,4 @@
 # C-ITS CAM decoder and CAM message generator
-This is a repository to access the CAM application source code + CAMAF framework source code. 
----
 
 ## Installations required for LocalHost
 ### Install DUST Ubuntu 18.04.5LTS
