@@ -23,7 +23,7 @@ if __name__ == "__main__":
                 current_phase = Startup.CONFIG_FILE_READING.value
                 # logging.warning("Configuration file is successfully being read")
         except:
-            # print("File doesn't exists: "+configuration_toml_file)
+            print("File doesn't exists: "+configuration_toml_file)
             sys.exit()
 
     if Startup.CONFIG_FILE_READING.value.__eq__(current_phase):
