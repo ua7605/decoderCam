@@ -12,7 +12,6 @@ from tools.startup_phase import Keyword
 
 if __name__ == "__main__":
 
-    # logging.basicConfig(format='%(asctime)s %(message)s')
     configuration_toml_file = "config.toml"
     current_phase = Startup.CONFIG_FILE_CHECK.value
 
@@ -64,7 +63,6 @@ if __name__ == "__main__":
 
         elif decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(true) and GPS_enabled.__eq__(false):
             agent_dust = AgentListenerDust(configuration_toml=config_file)
-            # TODO: Make this more generic so solve the problem of the bit string field in the ASN file.
             print("CUSTOM SERVICE RUNNING")
             agent_dust.start_c()
             while True:
@@ -72,7 +70,6 @@ if __name__ == "__main__":
 
         elif decoder.__eq__(true) and cam_generator.__eq__(false) and is_service_sp_vehicle.__eq__(true) and GPS_enabled.__eq__(true):
             agent_dust = AgentListenerDust(configuration_toml=config_file)
-            # TODO: Make this more generic so solve the problem of the bit string field in the ASN file.
             print("CUSTOM SERVICE RUNNING")
             agent_dust.start_c()
             gps: GPS = GPS.load_from_config(configuration=config_file, agent_listener_dust=agent_dust)
