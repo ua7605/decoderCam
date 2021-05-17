@@ -13,6 +13,6 @@ cam_generator = "true"
 special_vehicle_service = "true"
 
 [GPS]
-GPS_enabled = "true"
+GPS_enabled = "false"
 GPS_host_ip = "143.129.82.170"
 GPS_port = 2947
