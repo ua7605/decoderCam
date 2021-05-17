@@ -4,10 +4,9 @@
 ### Install DUST Ubuntu 18.04.5LTS
 1. Open a new terminal and download this repository: 
 - `git clone https://gitlab.ilabt.imec.be/flexible-networking-v2x-team-antwerp/dust-camino-install-essentials.git`
-- $ `sudo dpkg -I dust_2.0.0_amd64.deb`
+- `cd DUST-CAMINO-INSTALL-essentials`
 - The DUST Core has been installed.
 2. install the DUST Core:
-- `cd DUST-CAMINO-INSTALL-essentials`
 - $ `sudo dpkg -I dust_2.0.0_amd64.deb`
 -  Done! It has been installed.
 3. Install the python DUST plugin
