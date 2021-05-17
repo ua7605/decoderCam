@@ -4,6 +4,9 @@ import toml
 from DUST.agent_listener_dust import AgentListenerDust
 
 if __name__ == "__main__":
+    """
+    this main is meant to be used if you want to read out the CAMINO log files for CAM then you need to start this main.
+    """
 
     configuration_toml_file = "config.toml"
     with open(configuration_toml_file) as file:
