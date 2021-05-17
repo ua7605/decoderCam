@@ -2,15 +2,18 @@ import csv
 
 
 class CsvReader:
+    """
+    A csv reader class to make it much easier to read out CAMINO log files.
+    """
 
-    def __init__(self, file_paht):
-        self.file_paht = file_paht
+    def __init__(self, file_path):
+        self.file_path = file_path
 
     def read_csv_file(self):
         # With this I can retrive from the last line the most right element
         ans1_cam_data = None
 
-        with open(self.file_paht, 'r') as csv_file:
+        with open(self.file_path, 'r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
             teller =0
             received_message = False
@@ -32,7 +35,7 @@ class CsvReader:
         # With this I can retrive from the last line the most right element
         ans1_cam_data = None
 
-        with open(self.file_paht, 'r') as csv_file:
+        with open(self.file_path, 'r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
             received_message = False
             teller = 0
