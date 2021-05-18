@@ -10,12 +10,11 @@ class CsvReader:
         self.file_path = file_path
 
     def read_csv_file(self):
-        # With this I can retrive from the last line the most right element
+        # With this I can retrieve from the last line the most right element
         ans1_cam_data = None
 
         with open(self.file_path, 'r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
-            teller =0
             received_message = False
             for line in csv_reader:
 
@@ -32,7 +31,7 @@ class CsvReader:
         return ans1_cam_data, received_message
 
     def optimized_csv_read_file(self):
-        # With this I can retrive from the last line the most right element
+        # With this I can retrieve from the last line the most right element
         ans1_cam_data = None
 
         with open(self.file_path, 'r') as csv_file:
