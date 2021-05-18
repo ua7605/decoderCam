@@ -7,7 +7,7 @@ from deprecated_files.Decoder import CamDecoder
 
 
 class MyEventHandler(PatternMatchingEventHandler):
-    config = FileConfig("f","d")
+    config = FileConfig("f", "d")
     print(config.get_output_file_json())
     print()
 
@@ -31,7 +31,7 @@ def main(file_path=None, file_path_json=None):
     print('watched_dir = {watched_dir}'.format(watched_dir=watched_dir))
     patterns = [file_path]
     print('patterns = {patterns}'.format(patterns=', '.join(patterns)))
-    event_handler = MyEventHandler(patterns=patterns,file_path_to_csv_file=file_path,output_file_json=file_path_json)
+    event_handler = MyEventHandler(patterns=patterns, file_path_to_csv_file=file_path, output_file_json=file_path_json)
     observer = Observer()
     observer.schedule(event_handler, watched_dir, recursive=True)
     observer.start()
@@ -45,5 +45,3 @@ def main(file_path=None, file_path_json=None):
 
 if __name__ == "__main__":
     main(file_path='/Users/vincentcharpentier/School/Master/MAP/Decoder/cam_1_20210312T104241_uper.csv', file_path_json='/Users/vincentcharpentier/School/Master/MAP/Decoder/CAMv1.json')
-
-    #/Users/vincentcharpentier/School/Master/MAP/Decoder/cam_1_20210312T104241_uper.csv     /Users/vincentcharpentier/Downloads/username.csv
