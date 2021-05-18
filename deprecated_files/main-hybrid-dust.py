@@ -1,10 +1,9 @@
-import sys
 import time
 
 import toml
 
-from DUST.agent_listener_dust import AgentListenerDust
 from DUST.CAM_Message_generator.cam_generator import CamGenerator
+from DUST.agent_listener_dust import AgentListenerDust
 
 if __name__ == "__main__":
 
